@@ -61,6 +61,11 @@ COPY rsyslog/listen.conf /etc/rsyslog.d/listen.conf
 COPY rsyslog/python-pscheduler.conf /etc/rsyslog.d/python-pscheduler.conf
 COPY rsyslog/owamp-syslog.conf /etc/rsyslog.d/owamp-syslog.conf
 
+# -----------------------------------------------------------------------------
+
+# Disable SELinux
+RUN echo 0 >/selinux/enforce
+RUN sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
 # -----------------------------------------------------------------------------
 
