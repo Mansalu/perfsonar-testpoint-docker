@@ -66,12 +66,6 @@ COPY rsyslog/owamp-syslog.conf /etc/rsyslog.d/owamp-syslog.conf
 
 # -----------------------------------------------------------------------------
 
-# Disable SELinux
-RUN echo 0 >/selinux/enforce
-RUN sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
-
-# -----------------------------------------------------------------------------
-
 RUN mkdir -p /var/log/supervisor 
 ADD supervisord.conf /etc/supervisord.conf
 
