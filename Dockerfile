@@ -22,11 +22,11 @@ RUN yum -y install supervisor rsyslog net-tools sysstat iproute bind-utils tcpdu
 ENV PG_VERSION 9.5
 ENV PGVERSION 95
 
-# Set the environment variables
-ENV PGDATA /var/lib/pgsql/9.5/data
-
 # Initialize the database
 RUN su - postgres -c "/usr/pgsql-9.5/bin/pg_ctl init"
+
+# Set the environment variables
+ENV PGDATA /var/lib/pgsql/9.5/data
 
 # Overlay the configuration files
 COPY postgresql/postgresql.conf /var/lib/pgsql/$PG_VERSION/data/postgresql.conf
