@@ -25,6 +25,9 @@ ENV PGVERSION 95
 # Set the environment variables
 ENV PGDATA /var/lib/pgsql/9.5/data
 
+# Remove existing data
+RUN rm -rf /var/lib/pgsql/9.5/data
+
 # Initialize the database
 RUN su - postgres -c "/usr/pgsql-9.5/bin/pg_ctl init"
 
